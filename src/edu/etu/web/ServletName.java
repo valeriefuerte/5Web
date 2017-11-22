@@ -43,7 +43,6 @@ public class ServletName extends HttpServlet {
 
         String active_tab_content = getInitParameter("ActiveButton");
 
-
         String responseString = "<html>\n" +
                 "  <head>\n" +
                 "    <meta charset=\"UTF-8\">\n" +
@@ -177,6 +176,9 @@ public class ServletName extends HttpServlet {
                 "       tab.className = 'activetab'; \n" +
                 "       } \n"+
                 "\n" +
+                "      function addToCart(id) { \n" +
+                "       window.location.href = '/cart.jsp?add=' + id;\n" +
+                "       } \n" +
                 "    </script>\n" +
                 "  </head>\n" +
                 "\n" +
@@ -184,9 +186,14 @@ public class ServletName extends HttpServlet {
                 "  <h1>" + resources.getString("header_1") + "</h1> \n" +
                 "  <div class=\"container\"> \n" +
                 "    <div class=\"main\"> \n" +
-                "       <button>" + resources.getString("button1") + "</button> \n" +
-                "       <button>" + resources.getString("button2")+ "</button> \n" +
-                "       <button>" + resources.getString("button3")+ "</button> \n" +
+                "       <div class=\"language\"> \n"+
+                "            <a href=\"/item?id=" + item_id + "&lang=ru\"><img src=\"static/ru.jpeg\"> </a> \n" +
+                "            <a href=\"/item?id=" + item_id + "&lang=en\"><img src=\"static/en.jpeg\"> </a> \n" +
+                "            <a href=\"/item?id=" + item_id + "&lang=fi\"><img src=\"static/fi.jpeg\"> </a> \n" +
+                "        </div> \n" +
+                "       <button onclick=\"location.href='/index.jsp'\" >" + resources.getString("button1") + "</button> \n" +
+                "       <button onclick=\"location.href='/cart.jsp'\" >" + resources.getString("button2")+ "</button> \n" +
+                "       <button>" + resources.getString("button4")+ "</button> \n" +
                 "           <h2>" +
                 resources.getString("header_2") +
                 "</h2>\n" +
@@ -217,7 +224,7 @@ public class ServletName extends HttpServlet {
                 "            <p>" + resources.getString("info_p_3") + "</p>\n" +
                 "            <br>\n" +
                 "            <div id=\"buy\">\n" +
-                "               <button>" + resources.getString("buy_button") + "</button>\n" +
+                "               <button onclick=\"addToCart('" + item_id + "')\">" + resources.getString("buy_button") + "</button>\n" +
                 "            </div>\n" +
                 "        </div>\n" +
                 "        <div id=\"characteristic_content\" class=\"tabcontent\">\n" +
@@ -232,7 +239,7 @@ public class ServletName extends HttpServlet {
                 "            <br>\n" +
                 "            <p>" + resources.getString("characteristic_p_8") + "</p>\n" +
                 "            <div id=\"buy\">\n" +
-                "               <button>" + resources.getString("buy_button") + "</button>\n" +
+                "               <button onclick=\"addToCart('" + item_id + "')\">" + resources.getString("buy_button") + "</button>\n" +
                 "            </div>\n" +
                 "        </div>\n" +
                 "        <div id=\"review_content\" class=\"tabcontent\">\n" +
@@ -245,15 +252,12 @@ public class ServletName extends HttpServlet {
                 "                <p>" + resources.getString("review_p_2") + "</p>\n" +
                 "            </div>     \n" +
                 "            <div id=\"buy\">\n" +
-                "               <button>" + resources.getString("buy_button") + "</button>\n" +
+                "               <button onclick=\"addToCart('" + item_id + "')\">" + resources.getString("buy_button") + "</button>\n" +
                 "            </div>\n" +
                 "        </div>\n" +
                 "    </div>\n" +
                 "    </div>\n" +
                 "   </div>\n" +
-                "    <a href=\"/item?id=" + item_id + "&lang=ru\">ru</a> " +
-                "    <a href=\"/item?id=" + item_id + "&lang=en\">en</a> " +
-                "    <a href=\"/item?id=" + item_id + "&lang=fi\">fi</a>" +
                 "  </body>\n" +
                 "</html>\n";
 

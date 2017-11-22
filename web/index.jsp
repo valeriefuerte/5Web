@@ -7,6 +7,7 @@
 <%@ page import="edu.etu.web.Item" %>
 <%@ page import="com.sun.org.apache.xpath.internal.operations.Bool" %>
 
+<%@ include file="header.jsp"%>
 <%--
   Created by IntelliJ IDEA.
   User: valerie
@@ -95,6 +96,10 @@
     %>
 
     <script>
+        function addToCart(id) {
+            window.location.href = "/cart.jsp?add=" + id;
+        }
+
         function applyFilters(params = "?") {
             let min_price = document.getElementById("min_price").value;
             let max_price = document.getElementById("max_price").value;
@@ -155,13 +160,8 @@
 </head>
 <body>
     <meta charset="UTF-8">
-    <h1><%=shopResources.getString("header_1")%></h1>
-
     <div class="container">
         <div class="main">
-            <button><%=shopResources.getString("button1")%></button>
-            <button><%=shopResources.getString("button2")%></button>
-            <button><%=shopResources.getString("button3")%></button>
             <div class="right">
                 <%
                     String ref = request.getHeader("referer");
@@ -205,10 +205,7 @@
 
                 %>
                 <div class="cart">
-                    <b><%=shopResources.getString("b1")%></b>
-                    <b class="total_cost"> </b>
-                    <br />
-                    <button><%=shopResources.getString("button10")%></button>
+                    <button onclick="location.href='/cart.jsp'"><%=shopResources.getString("button10")%></button>
                     <form method="GET" id="filter">
                         <h3><%=shopResources.getString("h3")%></h3>
                         <p><%=shopResources.getString("p2")%>
@@ -250,7 +247,7 @@
                             <br />
                             <input type="checkbox" name="Vendor" id="club" <%if(isClub) {%> checked <%}%> ><%=shopResources.getString("input10")%>
                         </p>
-                        <input type="button" onclick="applyFilters()" value="<%=shopResources.getString("input12")%>">
+                        <input class="apply" type="button" onclick="applyFilters()" value="<%=shopResources.getString("input12")%>">
                         <script>
                             if(<%=firstVisit%>) {
                                 applyFilters();
@@ -266,8 +263,5 @@
             </div>
         </div>
     </div>
-    <a onclick="changeLanguage('ru')">ru</a>
-    <a onclick="changeLanguage('en')">en</a>
-    <a onclick="changeLanguage('fi')">fi</a>
 </body>
 </html>

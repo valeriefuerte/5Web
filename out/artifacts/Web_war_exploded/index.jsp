@@ -7,6 +7,7 @@
 <%@ page import="edu.etu.web.Item" %>
 <%@ page import="com.sun.org.apache.xpath.internal.operations.Bool" %>
 
+<%@ include file="header.jsp"%>
 <%--
   Created by IntelliJ IDEA.
   User: valerie
@@ -159,18 +160,8 @@
 </head>
 <body>
     <meta charset="UTF-8">
-    <h1><%=shopResources.getString("header_1")%></h1>
-
     <div class="container">
         <div class="main">
-            <div class="language">
-                <a onclick="changeLanguage('ru')"><img src="static/ru.jpeg">    </a>
-                <a onclick="changeLanguage('en')"><img src="static/en.jpeg">    </a>
-                <a onclick="changeLanguage('fi')"><img src="static/fi.jpeg">    </a>
-            </div>
-            <button><%=shopResources.getString("button1")%></button>
-            <button onclick="location.href='/cart.jsp'"><%=shopResources.getString("button2")%></button>
-            <button><%=shopResources.getString("button3")%></button>
             <div class="right">
                 <%
                     String ref = request.getHeader("referer");
