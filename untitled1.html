@@ -1,0 +1,139 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Travell with InfinitoFuerte</title>
+    <style type="text/css">
+        .table { 
+            width: 100%;
+            padding: 2px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .table > input {
+            display:none; 
+        }
+        .table > div {
+            display: none;
+            padding: 5px;
+            border: 1px solid #A9A9A9;
+            background: #FFFAF0;
+        }
+        .table > label {
+            display: inline-block;
+            padding: 6px;
+            margin: 0 -5px -1px 0;
+            text-align: center;
+            color: #666666;
+            border: 1px solid #A9A9A9;
+            background: #E0E0E0;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 2px;
+        }
+        .table > input:checked + label {
+            color: #000000;
+            border: 1px solid #C0C0C0;
+            border-bottom: 1px solid #FFFAF0;
+            background: #FFFAF0;
+        }
+        .table > label:hover {
+            color: darkcyan;          
+        }
+        .tabcontent {
+            display: none;
+            height: auto;
+            padding: 5px 10px;            
+            border: 1px solid #ccc;
+            border-top: none;
+            font-size: 18px;
+        }
+        .info_content{
+            margin-right: 10px;
+        }
+        button.buy{
+            color: red; 
+            background: #FFFAF8; 
+            padding: 5px; 
+            border-radius: 5px;
+            border: 2px solid red;
+            width: 90px;
+            height: 50px;
+            font-size: 20px;
+        }
+        button.buy:hover{
+            color: darkcyan;
+            cursor: pointer;
+        }
+        .review {
+            border-bottom: 1px solid #A9A9A9;
+            font-style: italic; 
+            font-size: 20px;
+        }
+        .review_last {
+            font-style: italic; 
+            font-size: 20px;
+        }
+        #info:checked ~ #info_content,
+        #characteristic:checked ~ #characteristic_content,
+        #review:checked ~ #review_content { display: block; }
+    </style>
+    <script type="text/javascript">
+
+    </script>
+  </head>
+
+  <body>
+    <h1>Путешествия, туры, путевки. Интернет - магазин</h1>
+    <h2>Санкт-Петербург и Ленинградская область</h2>
+    <div class="table">
+
+        <input type="radio" name="in" value="" id="info" checked >
+        <label for="info">Краткая информация</label>
+
+        <input type="radio" name="in" value="" id="characteristic">
+        <label for="characteristic">Характеристки</label>
+
+        <input type="radio" name="in" value="" id="review">
+        <label for="review">Отзывы</label>
+
+        <div id="info_content" class = "tabcontent">
+            <img src="tower.jpg" width = "180px" height = "250px" align="right" alt = "Телевышка">
+            <p>Предлагаем посетить один из самых красивых городов мира.</p>
+            <p>Почему Вам стоит путешествовать с нами?</p>
+            <ul class="info_content">
+              <li>Отличные цена</li>
+              <li>Комфортное размещение в центре города</li>
+              <li>Трансфер из аэропорта или вокзала до отеля</li>
+              <li>Только самое интересное</li>
+              <li>Море впечатлений</li>
+              <li>Хорошие отзывы</li>
+            </ul>
+            <p>По желанию заказчика возможно изменение или составление индивидуальной экскурсионной программы, бронирование билетов в театры Петербурга и Петербургский цирк, посещение музеев, океанариума и многого другого.</p>
+            <br>
+            <button class="buy">Купить</button>
+        </div>
+        <div id="characteristic_content" class="tabcontent">
+            <h4>В программу выходного дня входит:</h4>
+            <p>09.00 Прибытие в город</p>
+            <p>10.00 Прогулка по центру</p>
+            <p>14.00 Обед</p>
+            <p>16.00 Экскурсия</p>
+            <p>19.00 Театр</p>
+            <p>22.00 Ужин</p>
+            <p>23.00 Отдых</p>
+            <br>
+            <p>Для уточнения цены свяжитесь с нами.</p>
+        </div>
+        <div id="review_content" class="tabcontent">
+            <div class="review">
+                <h4>Василий</h4>
+                <p>Поехал на выходные. Успел посмотреть совсем мало, теперь хочу вернуться. Советую посетить экскурсию в Юсуповском дворце.</p>
+            </div>
+            <div class="review_last">
+                <h4>Алина</h4>
+                <p>Всем туристам, которые когда-либо планируют наведаться в Санкт-Петербург, я советую наряду с такими музеями, как Эрмитаж и Кунсткамера, посетить ещё и Русский музей. Где ещё вы можете увидеть такое количество картин, знакомых нам с детства? Это и монументальный «Последний день Помпеи» Брюллова, и бушующий «Девятый вал» Айвазовского, и величавая «Корабельная роща» Шишкина, и многое-многое другое из того, что мы знаем и любим.</p>
+            </div> 
+        </div>
+    </div>
+  </body>
+</html>
