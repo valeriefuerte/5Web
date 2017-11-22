@@ -11,6 +11,7 @@
 <html>
     <head>
         <title>Travell with InfinitoFuerte</title>
+        <link rel="stylesheet" type="text/css" href="static/index.css">
         <script>
             function changeLanguage(lang) {
                 window.location.href = "?lang=" + lang;

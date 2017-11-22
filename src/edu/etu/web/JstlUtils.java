@@ -1,8 +1,11 @@
 package edu.etu.web;
 
+import org.hibernate.Session;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.jsp.tagext.SimpleTagSupport;
 import java.util.Map;
 
 /**
@@ -26,5 +29,22 @@ public class JstlUtils {
         }
         response.addCookie(new Cookie("lang", lang));
         return lang;
+    }
+
+    public static class SaveOrderTag extends SimpleTagSupport {
+
+        private HistoryEntry value;
+
+        public void setValue(HistoryEntry value) {
+            this.value = value;
+        }
+
+        public void doTag() {
+            Session dbSession = HibernateUtil.getSessionFactory().openSession();
+            dbSession.beginTransaction();
+            dbSession.save(value);
+            dbSession.getTransaction().commit();
+            dbSession.close();
+        }
     }
 }

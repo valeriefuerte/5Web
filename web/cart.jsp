@@ -68,7 +68,7 @@
             </c:forEach>
             ${totalCost}
         </b>
-        <button class="cart_release">
+        <button class="cart_release" onclick="window.location.href = '/map.jsp'">
             <fmt:setBundle basename="strings"/>
             <fmt:message key="button10"/>
         </button>
