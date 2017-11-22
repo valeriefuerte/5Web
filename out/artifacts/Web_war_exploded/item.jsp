@@ -16,6 +16,6 @@
     <p>
         <%=itemResources.getString("p1")%>
     </p>
-    <button class="add_to_basket"><%=shopResources.getString("add_to_basket")%></button>
+    <button class="add_to_cart" onclick="addToCart('<%=item.getId()%>')"><%=shopResources.getString("add_to_cart")%></button>
     <a href="${pageContext.request.contextPath}/item?id=<%=item.getId()%>&lang=<%=lang %>"><button class="details"><%=shopResources.getString("details")%></button></a>
 </div>

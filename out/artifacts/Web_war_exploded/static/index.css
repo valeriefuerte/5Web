@@ -1,6 +1,5 @@
 body{
     background-color: #FFFAF0;
-    overflow: auto;
 }
 .container{
     max-width: 1920px;
@@ -20,6 +19,16 @@ body{
     border-radius: 5px;
     box-shadow: 0px 0px 10px 5px #dfdfdf;
     overflow: auto;
+}
+
+.main .language:hover{
+    cursor: pointer;
+}
+
+.main h1{
+    width: 80%;
+    text-align: left;
+    font-size: 250%;
 }
 
 .main > button {
@@ -43,11 +52,6 @@ body{
     float: right;
 }
 
-.main h1{
-    text-align: center;
-    font-size: 250%;
-}
-
 .main .items_container{
     font-size: 100%;
 }
@@ -64,76 +68,24 @@ body{
     box-shadow: 0px 0px 5px 3px #dfdfdf;
 }
 
-.main .items_container .item a{
-    font-weight: bold;
-}
-
 .main .items_container .item h3{
     font-size: 150%;
-}
-
-.main .items_container .item .buy{
-    border: 1px solid transparent;
-    background-color: #007769;
-    color: #fff;
-    font-size: 150%;
-    float: right;
-    padding: 15px;
-    margin: 15px;
-    border-radius: 5px;
-    box-shadow: 3px 3px 10px 1px #333;
-    cursor: pointer;
-}
-
-.main .items_container .item .buy:hover{
-    background-color: cyan;
-}
-
-.main .items_container .item .buy:active{
-    background-color: #004a3f;
 }
 
 .main .items_container .item img{
     float: left;
     margin-right: 15px;
     height: 100%;
-    width: auto;
     max-height: 200px;
     max-width: 200px;
     border-radius: 5px;
     box-shadow: 0px 0px 5px 1px #dfdfdf;
 }
 
-.main .items_container .item .price{
-    font-size: 150%;
-    background-color: #333333;
-    cursor: pointer;
-}
-
 .main .items_container .item p{
     font-size: 100%;
 }
 
-.main .filter-form{
-    background-color: #FFFAF0;
-    border-radius: 5px;
-    padding: 15px;
-    margin-bottom: 15px;
-    box-shadow: 0px 0px 5px 3px #dfdfdf;
-}
-
-.footer{
-    border-top: 1px solid #dfdfdf;
-    width: 90%;
-    max-width: 1920px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    color: #333;
-    padding-bottom: 50px;
-}
-
-/* new */
 .main .cart{
     background-color: #FFFAF0;
     border-radius: 5px;
@@ -141,12 +93,6 @@ body{
     box-shadow: 0px 0px 10px 5px #dfdfdf;
     text-align: center;
     font-size: 150%;
-    /*min-height: 250px;*/
-}
-
-.main .cart .total_cost{
-    font-size: 150%;
-    color: darkcyan;
 }
 
 .main .cart button{
@@ -157,14 +103,92 @@ body{
     background-color: darkcyan;
     color: #fff;
     font-size: 100%;
+    cursor: pointer;
 }
 
 .main .cart button:hover{
     background-color: cyan;
+    cursor: pointer;
 }
 
 .main .cart button:active{
     background-color: darkcyan;
+}
+
+.main .cart .apply{
+    margin: 25px;
+    padding: 15px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background-color: darkcyan;
+    color: #fff;
+    font-size: 100%;
+    cursor: pointer;
+}
+
+.main .cart .apply:hover{
+    background-color: cyan;
+    cursor: pointer;
+}
+
+.main .cart .apply:active{
+    background-color: darkcyan;
+}
+
+.main .cart .catalog_add_button{
+    margin: 25px;
+    padding: 15px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background-color: darkcyan;
+    color: #fff;
+    font-size: 100%;
+    cursor: pointer;
+}
+
+.main .cart .catalog_add_button:hover{
+    background-color: cyan;
+    cursor: pointer;
+}
+
+.main .cart .catalog_add_button:active{
+    background-color: darkcyan;
+}
+
+.cart_p{
+    font-size: 150%;
+    font-family: Arial;
+    float: left;
+}
+
+.cart_font{
+    float: left;
+    font-family: Arial;
+    font-size: 150%;
+    margin: 10px;
+}
+
+.cart_price_value{
+    margin: 10px;
+    font-family: Arial;
+    color: darkcyan;
+    float: left;
+    font-size: 200%;
+}
+
+.main .cart_release{
+    margin: 15px;
+    padding: 15px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background-color: darkcyan;
+    color: #fff;
+    font-size: 100%;
+    cursor: pointer;
+}
+.main .cart_release:hover{
+    background-color: cyan;
+    cursor: pointer;
 }
 
 .main .items_container .item .details{
@@ -179,44 +203,17 @@ body{
 .main .items_container .item .details:hover{
     text-decoration: underline;
     color: darkcyan;
+    cursor: pointer;
 }
 
 .main .items_container .item .details:active{
     text-decoration: none;
 }
 
-.main .items_container .item .action_bar{
-    padding: 15px;
-    margin-left: 15px;
-    margin-right: 15px;
-    overflow: auto;
-    float: right;
-    border: 1px solid transparent;
-    border-radius: 5px;
-    background-color: #fff;
-    box-shadow: 0px 0px 5px 1px #aaa;
-    width: 300px;
-    height: 245px;
-    text-align: center;
-}
-
 .main .items_container .item .item_header{
     font-size: 150%;
     padding: 5px;
     margin-bottom: 15px;
-}
-
-.main .items_container .item .item_header input{
-    margin-left: 25px;
-    float: right;
-    text-align: center;
-    border: 1px solid transparent;
-    border-bottom: 1px solid #333;
-    background-color: transparent;
-    color: #333;
-    font-size: 100%;
-    width: 100px;
-    margin-right: 25px;
 }
 
 .main .items_container .item .item_header .title{
@@ -229,7 +226,18 @@ body{
     color: darkcyan;
     float: right;
 }
-.main .items_container .item .add_to_basket{
+
+.main .items_container .item .item_header input{
+    text-align: center;
+    border: 1px solid transparent;
+    border-bottom: 1px solid #333;
+    background-color: transparent;
+    color: #333;
+    font-size: 100%;
+    width: 100px;
+}
+
+.main .items_container .item .add_to_cart{
     margin: 5px;
     padding: 15px;
     float: left;
@@ -238,7 +246,25 @@ body{
     background-color: darkcyan;
     color: #fff;
     font-size: 100%;
+    cursor: pointer;
 }
-.main .items_container .item .add_to_basket:hover{
+.main .items_container .item .add_to_cart:hover{
     background-color: cyan;
+    cursor: pointer;
+}
+
+.main .items_container .item .delete_button{
+    margin: 5px;
+    padding: 15px;
+    float: right;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    background-color: darkcyan;
+    color: #fff;
+    font-size: 100%;
+    cursor: pointer;
+}
+.main .items_container .item .delete_button:hover{
+    background-color: cyan;
+    cursor: pointer;
 }
