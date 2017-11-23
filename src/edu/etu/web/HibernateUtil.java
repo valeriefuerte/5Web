@@ -14,6 +14,7 @@ public class HibernateUtil {
         try {
             sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
         } catch (Throwable ex) {
+            System.out.println("DB Init Error: " + ex);
             throw new ExceptionInInitializerError(ex);
         }
     }

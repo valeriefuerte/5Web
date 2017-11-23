@@ -3,6 +3,8 @@ package edu.etu.web;
 /**
  * Created by valerie on 15.11.17.
  */
+import org.hibernate.Session;
+
 import javax.persistence.*;
 import java.util.*;
 
@@ -105,7 +107,10 @@ public class HistoryEntry {
     }
 
     public static List<HistoryEntry> getAll() {
-        return HibernateUtil.getSessionFactory().openSession().createCriteria(HistoryEntry.class).list();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List list = session.createCriteria(HistoryEntry.class).list();
+        session.close();
+        return list;
     }
 
 
