@@ -5,21 +5,21 @@
   Time: 9:35
   To change this template use File | Settings | File Templates.
 --%>
-
-<%@ page import="edu.etu.web.HistoryEntry" %>
-<%@ page import="edu.etu.web.Database" %>
-
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix='fmt' uri='http://java.sun.com/jsp/jstl/fmt' %>
 <%@ taglib prefix='util' uri='/WEB-INF/tld/util' %>
 
-<%@ page import="edu.etu.web.CookiesUtils" %>
 <%@ page import="javax.servlet.http.Cookie" %>
 <%@ page import="java.util.Locale" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.ResourceBundle" %>
+<%@ page import="edu.etu.web.HistoryEntry" %>
+<%@ page import="edu.etu.web.Database" %>
+<%@ page import="edu.etu.web.CookiesUtils" %>
 
 <c:set var="itemsMap" value="${Database.getAllItems()}" scope="request"/>
 
@@ -82,6 +82,11 @@
 
         onload = () => {
             loadComments();
+            setInterval(printTime, 1000);
+            printTime();
+            function printTime() {
+                document.getElementById("current_time").innerHTML = "" + new Date().toLocaleString("${lang}");
+            }
         }
     </script>
 </head>
@@ -111,8 +116,9 @@
             }
         %>
         <%=str%>
-
-        <br>
+        <br/>
+        <span id="current_time"></span>
+        <br/>
 
         <c:forEach var="order" items="${HistoryEntry.getAll()}">
             <c:if test="${order.user eq sessionScope.username}">

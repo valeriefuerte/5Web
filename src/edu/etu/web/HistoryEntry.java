@@ -107,10 +107,10 @@ public class HistoryEntry {
     }
 
     public static List<HistoryEntry> getAll() {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        List list = session.createCriteria(HistoryEntry.class).list();
-        session.close();
-        return list;
+        Session dbSession = HibernateUtil.getSessionFactory().openSession();
+        List<HistoryEntry> ordersList = dbSession.createCriteria(HistoryEntry.class).list();
+        dbSession.close();
+        return ordersList;
     }
 
 

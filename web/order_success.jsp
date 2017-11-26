@@ -23,7 +23,7 @@
 <jsp:useBean id="now" class="java.util.Date"/>
 <jsp:setProperty name="historyEntry" property="date" value="${now}"/>
 
-<util:saveOrder value="${historyEntry}"/>
+<%--<util:saveOrder value="${historyEntry}"/>--%>
 <c:remove var="purchaces"/>
 
 <c:if test="${empty sessionScope.purchaces}">

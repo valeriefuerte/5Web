@@ -373,3 +373,22 @@ body{
 .choose:active {
     text-decoration: none;
 }
+.commentButton{
+    font-size: 100%;
+    border: 1px solid transparent;
+    margin: 5px;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: darkcyan;
+    color: #fff;
+    cursor: pointer;
+}
+
+.commentButton:hover {
+    color: cyan;
+    cursor: pointer;
+}
+
+.commentButton:active {
+    text-decoration: none;
+}

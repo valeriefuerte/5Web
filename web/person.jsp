@@ -6,20 +6,22 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="header.jsp" %>
+
+
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix='fmt' uri='http://java.sun.com/jsp/jstl/fmt' %>
 <%@ taglib prefix='util' uri='/WEB-INF/tld/util' %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="edu.etu.web.CookiesUtils" %>
+
 <%@ page import="javax.servlet.http.Cookie" %>
 <%@ page import="java.util.Locale" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.ResourceBundle" %>
 <%@ page import="edu.etu.web.HistoryEntry" %>
 <%@ page import="edu.etu.web.Database" %>
+<%@ page import="edu.etu.web.CookiesUtils" %>
 
-
+<c:set var="itemsMap" value="${Database.getAllItems()}" scope="request"/>
 
 <c:set var="lang" value="${util:getLang(pageContext.request, pageContext.response)}"/>
 <fmt:setLocale value="${lang}"/>
@@ -42,9 +44,6 @@
     Locale locale = new Locale.Builder().setLanguage(lang).build();
     ResourceBundle resources = ResourceBundle.getBundle(item_id, locale);
 %>
-
-<c:set var="itemsMap" value="${Database.getAllItems()}" scope="request"/>
-
 <html>
 <head>
     <title>Travell with InfinitoFuerte</title>
@@ -53,9 +52,46 @@
         function changeLanguage(lang) {
             window.location.href = "?lang=" + lang;
         }
+        function loadComments() {
+            let xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    document.getElementsByClassName("comments_container")[0].innerHTML = xhr.responseText;
+                }
+            };
+
+            xhr.open("GET", "/comment", true);
+            xhr.send();
+        }
+
+        function postComment() {
+            let xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    document.getElementsByName("comment_text")[0].value = "";
+                    loadComments();
+                }
+            };
+
+            xhr.open("POST", "/comment", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.send("text=" + encodeURIComponent(document.getElementsByName("comment_text")[0].value));
+        }
+
+        onload = () => {
+            loadComments();
+            setInterval(printTime, 1000);
+            printTime();
+            function printTime() {
+                document.getElementById("current_time").innerHTML = "" + new Date().toLocaleString("${lang}");
+            }
+        }
     </script>
 </head>
 <body>
+<%@ include file="header.jsp" %>
 <div class="container">
     <div class="main">
         <fmt:setBundle basename="strings"/>
@@ -80,15 +116,15 @@
             }
         %>
         <%=str%>
-
-        <br>
+        <br/>
+        <span id="current_time"></span>
+        <br/>
 
         <c:forEach var="order" items="${HistoryEntry.getAll()}">
             <c:if test="${order.user eq sessionScope.username}">
 
                 <div class="items_container">
                     <div class="item">
-                        <br>
                         <c:forEach var="orderMapEntry" items="${HistoryEntry.decodeCartString(order.cart)}">
                             <c:if test="${itemsMap.containsKey(orderMapEntry.key)}">
                                 <c:set var="orderItem"
@@ -139,6 +175,19 @@
 
             </c:if>
         </c:forEach>
+
+        <fmt:setBundle basename="strings"/>
+        <fmt:message key="comments"/>: <br>
+        <br>
+        <div class="comments_container">
+
+        </div>
+
+        <textarea style="width:400px; height:300px" name="comment_text"></textarea>
+        <br>
+        <button onclick="postComment()" class="commentButton">
+            Post comment
+        </button>
 
     </div>
 </div>
